@@ -164,7 +164,7 @@ Return:
 	Decimal degrees coordinate.
 	
 **************************************************/
-float degMin2DecDeg(char *cind, char *ccor)
+float degMin2DecDeg(char *cind, char *ccor) //Martin.
 {
 	float degrees = 0.0;
 	
@@ -188,7 +188,7 @@ Input:
 Return:
 	distance in feet (3959 earth radius in miles * 5280 feet per mile)
 **************************************************/
-float calcDistance(float flat1, float flon1, float flat2, float flon2)
+float calcDistance(float flat1, float flon1, float flat2, float flon2) //Reponic
 {
 	float distance = 0.0;
 	
@@ -209,7 +209,7 @@ Input:
 Return:
 	angle in decimal degrees from magnetic north (normalize to a range of 0 to 360)
 **************************************************/
-float calcBearing(float flat1, float flon1, float flat2, float flon2)
+float calcBearing(float flat1, float flon1, float flat2, float flon2) //Reponic
 {
 	float bearing = 0.0;
 	
@@ -231,7 +231,7 @@ by this function do not need to be passed in, since these
 parameters are in global data space.
 
 */
-void setNeoPixel(void)
+void setNeoPixel(void) //Martin
 {
 	// add code here
 }

@@ -194,9 +194,17 @@ Return:
 float calcDistance(float flat1, float flon1, float flat2, float flon2)
 {
 	float distance = 0.0;
-	
-	// add code here
-	
+	float R = 3959.00; //Earth Radius Feet.
+	float lat1 = radians(flat1);
+	float lat2 = radians(flat2);
+	float dif1 = radians(flat2 - flat1);
+	float dif2 = radians(flon1 - flon2);
+
+	float A = (sinf(dif1 / 2) * cosf(dif1 / 2)) + (cosf(lat1) * cosf(lat2) * sinf(dif2 / 2) * sinf(dif2 / 2));
+	float C = 2 * atan2f(sqrtf(A), sqrtf(1 - A));
+
+	distance = R * C;
+
 	return(distance);
 }
 
@@ -215,9 +223,16 @@ Return:
 float calcBearing(float flat1, float flon1, float flat2, float flon2)
 {
 	float bearing = 0.0;
-	
-	// add code here
-	
+	float R = 3959.00; //Earth Radius Feet.
+	float firstlat = radians(flat1);
+	float firstlon = radians(flon1);
+	float secondlat = radians(flat2);
+	float secondlon = radians(flon2);
+
+	float y = sinf(secondlat - firstlat) * cosf(secondlon);
+	float x = cosf(firstlat) * sinf(secondlat) - sinf(firstlat) * cosf(secondlat) * cosf(secondlat - firstlat);
+	bearing = degrees(atan2f(y, x));
+
 	return(bearing);
 }
 

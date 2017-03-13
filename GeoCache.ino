@@ -6,14 +6,12 @@ This is skeleton code provided as a project development guideline only.  You
 are not required to follow this coding structure.  You are free to implement
 your project however you wish.  
 
-Team Number:
+Team Number: 1
 
 Team Members:
 
-	1.
-	2.
-	3.
-	4.
+	1.Martin Herrera
+	2.Miguel 
 	
 NOTES: 
 
@@ -81,7 +79,8 @@ enable all these libraries at the same time.  You must have have
 NEO_ON, GPS_ON and SDC_ON during the actual GeoCache Flag Hunt on
 Finals Day
 */
-#define NEO_ON 0		// NeoPixelShield
+#include <Adafruit_GPS.h>
+#define NEO_ON 1	// NeoPixelShield
 #define TRM_ON 1		// SerialTerminal
 #define SDC_ON 0		// SecureDigital
 #define GPS_ON 1		// Live GPS Message (off = simulated)
@@ -90,6 +89,8 @@ Finals Day
 #define NEO_TX	6		// NEO transmit
 #define GPS_TX	7		// GPS transmit
 #define GPS_RX	8		// GPS receive
+#define BUTTON  2		// Button PIN
+#define POTENTIOMETER  A0	// Potentiometer PIN 
 
 // GPS message buffer
 #define GPS_RX_BUFSIZ	128
@@ -164,12 +165,14 @@ Return:
 	Decimal degrees coordinate.
 	
 **************************************************/
-float degMin2DecDeg(char *cind, char *ccor) //Martin.
+float degMin2DecDeg(char *cind, char *ccor)
 {
-	float degrees = 0.0;
-	
-	// add code here
-	
+	//convert from minutes to degrees
+	float degrees = atof(ccor);
+	//check if possition is negative
+	if (cind == "S" || cind == "W")
+		degrees = -(degrees);
+	//return result
 	return(degrees);
 }
 
@@ -188,19 +191,11 @@ Input:
 Return:
 	distance in feet (3959 earth radius in miles * 5280 feet per mile)
 **************************************************/
-float calcDistance(float flat1, float flon1, float flat2, float flon2) //Reponic
+float calcDistance(float flat1, float flon1, float flat2, float flon2)
 {
 	float distance = 0.0;
-	float R = 3959.00; //Earth Radius Feet.
-	float lat1 = radians(flat1);
-	float lat2 = radians(flat2);
-	float dif1 = radians(flat2 - flat1);
-	float dif2 = radians(flon1 - flon2);
-
-	float A = (sinf(dif1 / 2) * cosf(dif1 / 2)) + (cosf(lat1) * cosf(lat2) * sinf(dif2 / 2) * sinf(dif2 / 2));
-	float C = 2 * atan2f(sqrtf(A), sqrtf(1 - A));
-
-	distance = R * C;
+	
+	// add code here
 	
 	return(distance);
 }
@@ -217,18 +212,11 @@ Input:
 Return:
 	angle in decimal degrees from magnetic north (normalize to a range of 0 to 360)
 **************************************************/
-float calcBearing(float flat1, float flon1, float flat2, float flon2) //Reponic
+float calcBearing(float flat1, float flon1, float flat2, float flon2)
 {
 	float bearing = 0.0;
-	float R = 3959.00; //Earth Radius Feet.
-	float firstlat = radians(flat1);
-	float firstlon = radians(flon1);
-	float secondlat = radians(flat2);
-	float secondlon = radians(flon2);
-
-	float y = sinf(secondlat - firstlat) * cosf(secondlon);
-	float x = cosf(firstlat) * sinf(secondlat) - sinf(firstlat) * cosf(secondlat) * cosf(secondlat - firstlat);
-	bearing = degrees(atan2f(y, x));
+	
+	// add code here
 	
 	return(bearing);
 }
@@ -246,9 +234,123 @@ by this function do not need to be passed in, since these
 parameters are in global data space.
 
 */
-void setNeoPixel(void) //Martin
+void setNeoPixel(uint8_t target, float heading, float distance)
 {
-	// add code here
+	strip.clear();
+	strip.setBrightness(map(analogRead(POTENTIOMETER), 0, 1023, 0, 255));
+	// Display target
+	if (target == 1)
+	{
+		strip.setPixelColor(0, strip.Color(255, 0, 0));
+		strip.setPixelColor(1, strip.Color(255, 0, 0));
+	}
+	else if (target == 2)
+	{
+		strip.setPixelColor(2, strip.Color(0, 255, 0));
+		strip.setPixelColor(3, strip.Color(0, 255, 0));
+	}
+	else if (target == 3)
+	{
+		strip.setPixelColor(4, strip.Color(0, 0, 255));
+		strip.setPixelColor(5, strip.Color(0, 0, 255));
+	}
+	else if (target == 4)
+	{
+		strip.setPixelColor(6, strip.Color(255, 0, 255));
+		strip.setPixelColor(7, strip.Color(255, 0, 255));
+	}
+	// Display heading
+	if (heading > 180)
+		heading = 0 - (heading - 180);
+	strip.setPixelColor(11, strip.Color(0, 255, 0));
+	strip.setPixelColor(12, strip.Color(0, 255, 0));
+	strip.setPixelColor(19, strip.Color(0, 255, 0));
+	strip.setPixelColor(20, strip.Color(0, 255, 0));
+	if (heading > 10)
+		strip.setPixelColor(12, strip.Color(255, 153, 0));
+	if (heading > 20)
+		strip.setPixelColor(20, strip.Color(255, 153, 0));
+	if (heading > 30)
+		strip.setPixelColor(13, strip.Color(255, 153, 0));
+	if (heading > 40)
+		strip.setPixelColor(21, strip.Color(255, 153, 0));
+	if (heading > 50)
+		strip.setPixelColor(14, strip.Color(255, 153, 0));
+	if (heading > 60)
+		strip.setPixelColor(22, strip.Color(255, 153, 0));
+	if (heading > 70)
+		strip.setPixelColor(15, strip.Color(255, 153, 0));
+	if (heading > 80)
+		strip.setPixelColor(23, strip.Color(255, 153, 0));
+	if (heading > 90)
+		strip.setPixelColor(12, strip.Color(255, 0, 0));
+	if (heading > 100)
+		strip.setPixelColor(20, strip.Color(255, 0, 0));
+	if (heading > 110)
+		strip.setPixelColor(13, strip.Color(255, 0, 0));
+	if (heading > 120)
+		strip.setPixelColor(21, strip.Color(255, 0, 0));
+	if (heading > 130)
+		strip.setPixelColor(14, strip.Color(255, 0, 0));
+	if (heading > 140)
+		strip.setPixelColor(22, strip.Color(255, 0, 0));
+	if (heading > 150)
+		strip.setPixelColor(15, strip.Color(255, 0, 0));
+	if (heading > 160)
+		strip.setPixelColor(23, strip.Color(255, 0, 0));
+	if (heading < -10)
+		strip.setPixelColor(11, strip.Color(255, 153, 0));
+	if (heading < -20)
+		strip.setPixelColor(19, strip.Color(255, 153, 0));
+	if (heading < -30)
+		strip.setPixelColor(10, strip.Color(255, 153, 0));
+	if (heading < -40)
+		strip.setPixelColor(18, strip.Color(255, 153, 0));
+	if (heading < -50)
+		strip.setPixelColor(9, strip.Color(255, 153, 0));
+	if (heading < -60)
+		strip.setPixelColor(17, strip.Color(255, 153, 0));
+	if (heading < -70)
+		strip.setPixelColor(8, strip.Color(255, 153, 0));
+	if (heading < -80)
+		strip.setPixelColor(16, strip.Color(255, 153, 0));
+	if (heading < -90)
+		strip.setPixelColor(11, strip.Color(255, 0, 0));
+	if (heading < -100)
+		strip.setPixelColor(19, strip.Color(255, 0, 0));
+	if (heading < -110)
+		strip.setPixelColor(10, strip.Color(255, 0, 0));
+	if (heading < -120)
+		strip.setPixelColor(18, strip.Color(255, 0, 0));
+	if (heading < -130)
+		strip.setPixelColor(9, strip.Color(255, 0, 0));
+	if (heading < -140)
+		strip.setPixelColor(17, strip.Color(255, 0, 0));
+	if (heading < -150)
+		strip.setPixelColor(8, strip.Color(255, 0, 0));
+	if (heading < -160)
+		strip.setPixelColor(16, strip.Color(255, 0, 0));
+	// Display distance
+	for (size_t i = 0; i < 48; i++)
+	{
+		if (distance > 1)
+		{
+			if (distance > (10 * i))
+				strip.setPixelColor(24 + i, strip.Color(0, 255, 0));
+		}
+		if (distance > 160)
+		{
+			if (distance > (160 + (10 * i)))
+				strip.setPixelColor(24 + i, strip.Color(255, 153, 0));
+		}
+		if (distance > 320)
+		{
+			if (distance > (320 + (10 * i)))
+				strip.setPixelColor(24 + i, strip.Color(255, 0, 0));
+		}
+	}
+
+	strip.show();
 }
 
 #endif	// NEO_ON
@@ -394,6 +496,16 @@ void setup(void)
 	#endif		
 
 	// init target button here
+	pinMode(BUTTON, INPUT_PULLUP);
+	strip.begin();
+	strip.clear();
+	for (size_t i = 0; i < strip.numPixels(); i++)
+	{
+		strip.setPixelColor(i, strip.Color(255, 0, 0));
+		strip.show();
+		delay(50);
+		strip.clear();
+	}
 }
 
 void loop(void)
@@ -402,7 +514,12 @@ void loop(void)
 	getGPSMessage();
 	
 	// if button pressed, set new target
-	
+	if (digitalRead(BUTTON) == LOW)
+	{
+		target++;
+		if (target > 4)
+			target = 1;
+	}
 	// if GPRMC message (3rd letter = R)
 	while (cstr[3] == 'R')
 	{
@@ -422,6 +539,12 @@ void loop(void)
 	#if NEO_ON
 	// set NeoPixel target display
 	setNeoPixel(target, heading, distance);
+	heading += 10;
+	if (heading > 360)
+		heading = 0;
+	distance += 10;
+	if (distance > 480)
+		distance = 0;
 	#endif		
 
 	#if TRM_ON

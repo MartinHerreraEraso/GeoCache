@@ -75,12 +75,79 @@
     <ProjectCapability Include="VisualMicro" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\wiring_pulse.S" />
+    <None Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\library.properties" />
+    <None Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\library.properties" />
+    <None Include="C:\Users\Reponic\Documents\Arduino\libraries\Adafruit_NeoPixel-master\library.properties" />
     <None Include="GeoCache.ino">
       <FileType>CppCode</FileType>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Arduino.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\binary.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Client.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial_private.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\IPAddress.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\new.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\PluggableUSB.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Print.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Printable.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Server.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Stream.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Udp.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\USBAPI.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\USBCore.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\USBDesc.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\WCharacter.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\wiring_private.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\WString.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src\SoftwareSerial.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard\pins_arduino.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\SD.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\FatStructs.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\Sd2Card.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\Sd2PinMap.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\SdFat.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\SdFatmainpage.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\SdFatUtil.h" />
+    <ClInclude Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\SdInfo.h" />
+    <ClInclude Include="C:\Users\Reponic\Documents\Arduino\libraries\Adafruit_NeoPixel-master\Adafruit_NeoPixel.h" />
     <ClInclude Include="__vm\.GeoCache.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\abi.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\CDC.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial0.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial1.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial2.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\HardwareSerial3.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\IPAddress.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\main.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\new.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\PluggableUSB.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Print.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Stream.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\Tone.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\USBCore.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\WMath.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\WString.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src\SoftwareSerial.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\File.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\SD.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\Sd2Card.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\SdFile.cpp" />
+    <ClCompile Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\utility\SdVolume.cpp" />
+    <ClCompile Include="C:\Users\Reponic\Documents\Arduino\libraries\Adafruit_NeoPixel-master\Adafruit_NeoPixel.cpp" />
+    <ClCompile Include="C:\Users\Reponic\Documents\Arduino\libraries\Adafruit_NeoPixel-master\esp8266.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\keywords.txt" />
+    <Text Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\keywords.txt" />
+    <Text Include="..\..\..\..\..\Program Files (x86)\Arduino\libraries\SD\src\README.txt" />
+    <Text Include="C:\Users\Reponic\Documents\Arduino\libraries\Adafruit_NeoPixel-master\keywords.txt" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
